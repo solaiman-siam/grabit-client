@@ -55,9 +55,9 @@ function NavbarBottom() {
                 placeholder="Search products..."
                 aria-describedby="hs-validation-name-success-helper"
               />
-              <div className="absolute text-gray-400 inset-y-0 end-0 flex items-center pointer-events-none pe-3">
+              <button className="absolute cursor-pointer text-gray-400 inset-y-0 end-0 flex items-center pointer-events-none pe-3">
                 <RiSearchLine size={20} />
-              </div>
+              </button>
             </div>
           </div>
         </div>
