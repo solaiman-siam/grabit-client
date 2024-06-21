@@ -1,6 +1,7 @@
 import Categories from "../components/Categories";
 import Deal from "../components/Deal";
 import Discount from "../components/Discount";
+import NewArrivals from "../components/NewArrivals";
 import SliderBanner from "../components/SliderBanner";
 
 function Home() {
@@ -10,6 +11,7 @@ function Home() {
       <Categories></Categories>
       <Deal></Deal>
       <Discount></Discount>
+      <NewArrivals></NewArrivals>
     </div>
   );
 }

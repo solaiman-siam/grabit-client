@@ -24,7 +24,6 @@ function Deal() {
     },
   });
 
-  console.log(deals);
 
   const handleHoverEnter = (value1, value2) => {
     setSidebar(value1);
@@ -36,8 +35,6 @@ function Deal() {
     setCurrentIdx(value2);
   };
 
-  console.log(currentIdx);
-  console.log(sidebar);
 
   return (
     <div className="container px-20 mx-auto py-5 ">
