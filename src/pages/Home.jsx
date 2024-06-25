@@ -1,4 +1,6 @@
 import Categories from "../components/Categories";
+import Collection from "../components/Collection";
+import CustomerCare from "../components/CustomerCare";
 import Deal from "../components/Deal";
 import Discount from "../components/Discount";
 import NewArrivals from "../components/NewArrivals";
@@ -12,6 +14,8 @@ function Home() {
       <Deal></Deal>
       <Discount></Discount>
       <NewArrivals></NewArrivals>
+      <Collection></Collection>
+      <CustomerCare></CustomerCare>
     </div>
   );
 }

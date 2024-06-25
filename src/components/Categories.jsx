@@ -15,7 +15,6 @@ function Categories() {
     },
   });
 
-  console.log(categories);
 
   return (
     <div className="container px-20 mx-auto py-16">

@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 import { Link } from "react-router-dom"
 import useAxiosCommon from "../hooks/useAxiosCommon"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { RiShoppingCartLine } from "react-icons/ri"
 import { MdOutlineCompareArrows } from "react-icons/md"
 import { LuEye } from "react-icons/lu"
@@ -13,16 +13,33 @@ function NewArrivals() {
     const [tabs, setTabs] = useState('')
     const [sidebar, setSidebar] = useState(false);
     const [currentIdx, setCurrentIdx] = useState();
+    const [arrivals, setArrivals] = useState([])
 
 
-    const {data: arrivals = [], refetch} = useQuery({
-        queryKey: ['arrivals', tabs],
-        queryFn: async () => {
-            const {data} = await axiosCommon.get(`/arrivals?tabs=${tabs}`)
-            return data
+   const {data: allArrivals = []} = useQuery({
+    queryKey: ['allArrivals'],
+    queryFn: async () => {
+      const {data} = await axiosCommon.get('/arrivals')
+      return data
+    }
+   })
 
-        }
+   useEffect(()=> {
+    setArrivals(allArrivals)
+   },[allArrivals])
+   
+
+
+    const {data: tabSearchData = []} = useQuery({
+      queryKey: ['tabSearch', tabs],
+      // enabled: !tabs,
+      queryFn: async () => {
+        const {data} = await axiosCommon.get(`/tabSearch?tabs=${tabs}`)
+        setArrivals(data)
+        return data
+      }
     })
+
 
 // hover state storing
     const handleHoverEnter = (value1, value2) => {
@@ -35,22 +52,18 @@ function NewArrivals() {
         setCurrentIdx(value2);
       };
 
-
+// tab search handle
     const handleAll = () => {
-        setTabs('All')
-        refetch()
+        setArrivals(allArrivals)
     }
     const handleClothes = (value) => {
         setTabs(value)
-        refetch()
     }
     const handleFootwear = (value) => {
         setTabs(value)
-        refetch()
     }
     const handleAccessories = (value) => {
         setTabs(value)
-        refetch()
     }
 
 
@@ -63,10 +76,10 @@ function NewArrivals() {
                 <p className="text-sm text-gray-500 pt-2">Shop online for new arrivals and get free shipping!</p>
             </div>
             <div className="flex-1 flex justify-end text-[15px] gap-10 text-gray-500 font-medium">
-                <Link><button onClick={() => handleAll('')}>ALL</button></Link>
-                <Link><button onClick={() => handleClothes('Clothes')}>CLOTHES</button></Link>
-                <Link><button onClick={() => handleFootwear('Footwear')}>FOOTWARE</button></Link>
-                <Link><button onClick={() => handleAccessories('Accessories')}>ACCESSORIES</button></Link>
+                <button onClick={() => handleAll('')}>ALL</button>
+                <button onClick={() => handleClothes('Clothes')}>CLOTHES</button>
+                <button onClick={() => handleFootwear('Footwear')}>FOOTWARE</button>
+                <button onClick={() => handleAccessories('Accessories')}>ACCESSORIES</button>
             </div>
         </div>
 
