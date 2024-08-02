@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
-import { Link } from "react-router-dom"
 import useAxiosCommon from "../hooks/useAxiosCommon"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { RiShoppingCartLine } from "react-icons/ri"
 import { MdOutlineCompareArrows } from "react-icons/md"
 import { LuEye } from "react-icons/lu"
@@ -10,29 +9,28 @@ import { PiHeartBold } from "react-icons/pi"
 function NewArrivals() {
 
     const axiosCommon = useAxiosCommon()
+    const [arrivals, setArrivals] = useState([])
     const [tabs, setTabs] = useState('')
     const [sidebar, setSidebar] = useState(false);
     const [currentIdx, setCurrentIdx] = useState();
-    const [arrivals, setArrivals] = useState([])
 
+
+   
 
    const {data: allArrivals = []} = useQuery({
-    queryKey: ['allArrivals'],
+    queryKey: ['allData', setArrivals],
     queryFn: async () => {
       const {data} = await axiosCommon.get('/arrivals')
+      console.log(data);
+      setArrivals(data)
       return data
     }
    })
 
-   useEffect(()=> {
-    setArrivals(allArrivals)
-   },[allArrivals])
-   
-
+   console.log(arrivals);
 
     const {data: tabSearchData = []} = useQuery({
       queryKey: ['tabSearch', tabs],
-      // enabled: !tabs,
       queryFn: async () => {
         const {data} = await axiosCommon.get(`/tabSearch?tabs=${tabs}`)
         setArrivals(data)

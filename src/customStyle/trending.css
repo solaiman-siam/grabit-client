@@ -1,0 +1,7 @@
+.swiper-button-prev, .swiper-rtl .swiper-button-next {
+    display: none;
+}
+
+.swiper-button-next, .swiper-rtl .swiper-button-prev {
+    display: none;
+}

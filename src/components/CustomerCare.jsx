@@ -1,10 +1,10 @@
 import { CiDeliveryTruck, CiHeart, CiMoneyCheck1 } from "react-icons/ci";
 import { PiHandArrowDownThin } from "react-icons/pi";
-import { LiaDonateSolid } from "react-icons/lia";
-import { IoIosHeartEmpty } from "react-icons/io";
+
+
 function CustomerCare() {
   return (
-    <div className="container mx-auto px-20 pb-20">
+    <div className="container mx-auto px-20 pb-16">
       <div className="grid grid-cols-4 gap-6">
         <div className="p-4 border text-center flex flex-col justify-center items-center">
           <CiDeliveryTruck size={50} color="#5CAF90" />
