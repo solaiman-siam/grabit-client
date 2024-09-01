@@ -21,13 +21,12 @@ function NewArrivals() {
     queryKey: ['allData', setArrivals],
     queryFn: async () => {
       const {data} = await axiosCommon.get('/arrivals')
-      console.log(data);
       setArrivals(data)
       return data
     }
    })
 
-   console.log(arrivals);
+
 
     const {data: tabSearchData = []} = useQuery({
       queryKey: ['tabSearch', tabs],

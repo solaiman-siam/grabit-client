@@ -7,9 +7,9 @@ function TrendingNavButtons() {
     const swiper = useSwiper()
 
   return (
-    <div className='d-flex gap-6  justify-center'>
-        <button onClick={()=> swiper.slidePrev()} ><IoIosArrowBack size={24}/></button>
-        <button onClick={()=> swiper.slideNext()}><IoIosArrowForward size={24} /></button>
+    <div className='flex gap-2 pt-2  justify-end'>
+        <button onClick={()=> swiper.slidePrev()} ><IoIosArrowBack className='text-gray-500 hover:text-[#5CAF90] transition-colors' size={24}/></button>
+        <button onClick={()=> swiper.slideNext()}><IoIosArrowForward className='text-gray-500 hover:text-[#5CAF90] transition-colors' size={24} /></button>
     </div>
   )
 }
